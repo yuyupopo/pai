@@ -353,7 +353,7 @@ class Job {
           'taskData': data.taskRoles[idx],
           'jobData': data,
           'inspectPidFormat': '{{.State.Pid}}',
-          'inspectOOMKilledFormat': '{{.State.OOMKilled}}'
+          'inspectOOMKilledFormat': '{{.State.OOMKilled}}',
         });
     return yarnContainerScript;
   }
