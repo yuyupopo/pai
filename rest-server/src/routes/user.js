@@ -21,6 +21,7 @@ const tokenConfig = require('../config/token');
 const userConfig = require('../config/user');
 const userController = require('../controllers/user');
 const param = require('../middlewares/parameter');
+const jobRouter = require('./job');
 
 const router = new express.Router();
 
@@ -36,6 +37,8 @@ router.route('/')
 
 router.route('/:username/virtualClusters')
     .put(tokenConfig.check, param.validate(userConfig.userVcUpdateInputSchema), userController.updateUserVc);
+
+router.use('/:username/jobs', jobRouter)
 
 // module exports
 module.exports = router;
