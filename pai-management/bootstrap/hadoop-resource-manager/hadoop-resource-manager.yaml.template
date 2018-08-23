@@ -67,7 +67,7 @@ spec:
           value: resourcemanager-start-service.sh
         resources:
           limits:
-            memory: "1Gi"
+            memory: "16Gi"
             cpu: "100m"
       imagePullSecrets:
       - name: {{ clusterinfo['dockerregistryinfo']['secretname'] }}
