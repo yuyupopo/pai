@@ -25,28 +25,28 @@ const jobConfig = require('../config/job');
 const param = require('../middlewares/parameter');
 
 
-const router = new express.Router({ mergeParams: true });
+const router = new express.Router({mergeParams: true});
 
 router.route('/')
     /** GET /api/v1/jobs - Get list of jobs */
     .get(jobParam.query, jobController.list)
 
     /** POST /api/v1/jobs - Update job */
-    .post(tokenConfig.check, jobParam.submission, jobController.init, jobController.update);
+    .post(jobParam.checkReadonly, tokenConfig.check, jobParam.submission, jobController.init, jobController.update);
 
 router.route('/:jobName')
     /** GET /api/v1/jobs/:jobName - Get job status */
     .get(jobController.get)
 
     /** PUT /api/v1/jobs/:jobName - Update job */
-    .put(tokenConfig.check, jobParam.submission, jobController.update)
+    .put(jobParam.checkReadonly, tokenConfig.check, jobParam.submission, jobController.update)
 
     /** DELETE /api/v1/jobs/:jobName - Remove job */
-    .delete(tokenConfig.check, jobController.remove);
+    .delete(jobParam.checkReadonly, tokenConfig.check, jobController.remove);
 
 
 router.route('/:jobName/executionType')
-    .put(param.validate(jobConfig.executionSchema), tokenConfig.check, jobController.execute);
+    .put(jobParam.checkReadonly, param.validate(jobConfig.executionSchema), tokenConfig.check, jobController.execute);
 
 router.route('/:jobName/config')
     .get(jobController.getConfig);

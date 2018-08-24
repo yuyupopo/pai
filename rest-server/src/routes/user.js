@@ -38,7 +38,7 @@ router.route('/')
 router.route('/:username/virtualClusters')
     .put(tokenConfig.check, param.validate(userConfig.userVcUpdateInputSchema), userController.updateUserVc);
 
-router.use('/:username/jobs', jobRouter)
+router.use('/:username/jobs', jobRouter);
 
 // module exports
 module.exports = router;
