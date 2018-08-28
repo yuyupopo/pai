@@ -254,7 +254,6 @@ def kubectl_env_checking(cluster_object_mode):
 
         while True:
             user_input = raw_input("Do you want to re-install kubectl by paictl? (Y/N) ")
-
             if user_input == "N":
                 count_quit = 0
                 while True:
@@ -558,7 +557,8 @@ def pai_cluster():
         count_input = 0
 
         while True:
-            user_input = raw_input("Do you want to continue this operation? (Y/N) ")
+            #user_input = raw_input("Do you want to continue this operation? (Y/N) ")
+            user_input = "Y"
             if user_input == "N":
                 return
             elif user_input == "Y":
